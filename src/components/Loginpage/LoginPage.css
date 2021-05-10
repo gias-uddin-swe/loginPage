@@ -64,7 +64,7 @@ body {
 
 @media only screen and (max-width: 423px) {
   .cp > p {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 @media only screen and (min-width: 701px) and (max-width: 991px) {
@@ -149,8 +149,10 @@ body {
 #change {
   display: inline-block;
   text-align: center;
-  padding: 3% 10%;
-  margin-top: 10%;
+  padding: 13px 26px;
+  /* padding: 3% 10%; */
+  /* margin-top: 11%; */
+  margin-top: 70px;
   color: white;
   background-color: rgb(12, 108, 242);
   border: none;
@@ -174,4 +176,21 @@ body {
   text-decoration: none;
   color: rgb(152, 161, 178);
   margin-left: 10px;
+}
+
+@media screen and (max-width: 375px) {
+  #change {
+    display: inline-block;
+    text-align: center;
+    /* padding: 3% 10%; */
+
+    margin-top: 10%;
+    color: white;
+    background-color: rgb(12, 108, 242);
+    border: none;
+    border-radius: 5px;
+  }
+}
+.conditional-para {
+  margin-bottom: 75vh;
 }
