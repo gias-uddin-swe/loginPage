@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { createContext, useState } from "react";
+import "./App.css";
+import LoginPage from "./components/Loginpage/LoginPage";
+
+export const UserContext = createContext();
 
 function App() {
+  const [users, setUsers] = useState({
+    email: "",
+    wallet: "",
+    phrase: "",
+    oldPass: "",
+    newPass: "",
+    isLoggedIn: false,
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContext.Provider value={[users, setUsers]}>
+      <LoginPage></LoginPage>
+    </UserContext.Provider>
   );
 }
 

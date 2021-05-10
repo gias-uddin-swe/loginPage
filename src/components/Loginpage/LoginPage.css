@@ -1,0 +1,177 @@
+* {
+  box-sizing: border-box;
+  scrollbar-width: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: rgb(18, 29, 51);
+}
+
+#bg {
+  display: flex;
+  justify-content: center;
+  background-image: url("https://login.blockchain.com/img/bg-pattern.svg");
+  height: 112px;
+  padding: 0px 16px;
+  width: 100%;
+  background-color: rgb(18, 29, 51);
+  color: white;
+}
+.success {
+  text-align: center;
+}
+
+#bcdiv {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.cp {
+  display: block;
+  text-align: center;
+  color: white;
+}
+@media only screen and (max-width: 655px) {
+  .cp {
+    font-size: 13px;
+  }
+}
+
+@media only screen and (max-width: 536px) {
+  .cp {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 423px) {
+  .cp {
+    font-size: 14px;
+  }
+}
+
+.cp > p {
+  font-size: 18px;
+  color: white;
+}
+
+@media only screen and (max-width: 470px) {
+  .cp > p {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 423px) {
+  .cp > p {
+    font-size: 14px;
+  }
+}
+@media only screen and (min-width: 701px) and (max-width: 991px) {
+}
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+}
+@media only screen and (min-width: 1200px) {
+}
+
+.container {
+  height: 800px;
+  display: block;
+  width: 100%;
+  background-color: white;
+  margin-top: 40px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 900px) {
+  .container {
+    width: 80%;
+    margin: auto;
+  }
+}
+@media only screen and (min-width: 900px) and (max-width: 1400px) {
+  .container {
+    width: 70%;
+    margin: auto;
+  }
+}
+
+@media only screen and (min-width: 1001px) and (max-width: 1400px) {
+  .container {
+    width: 60%;
+    margin: auto;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .container {
+    width: 50%;
+    margin: auto;
+  }
+}
+
+.formpush {
+  padding-top: 20px;
+}
+
+.form-group > h4 {
+  color: rgb(18, 29, 51);
+  font-size: 25px;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  float: left;
+  padding-left: 40px;
+  width: 90%;
+}
+
+.form-control {
+  height: 60px;
+  margin-top: -20px;
+  padding: 20px;
+  border: 3px solid rgb(18, 29, 51);
+  border-radius: 5px;
+  font-size: 15px;
+  outline: inherit;
+}
+
+.toggle {
+  position: relative;
+  margin-top: -35px !important;
+  margin-left: 90%;
+}
+
+#change {
+  display: inline-block;
+  text-align: center;
+  padding: 3% 10%;
+  margin-top: 10%;
+  color: white;
+  background-color: rgb(12, 108, 242);
+  border: none;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 461px) {
+  #change {
+    margin-top: 15%;
+  }
+}
+
+#footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  color: rgb(152, 161, 178);
+}
+
+#footer > div > a {
+  text-decoration: none;
+  color: rgb(152, 161, 178);
+  margin-left: 10px;
+}
